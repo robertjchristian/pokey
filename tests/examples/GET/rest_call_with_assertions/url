@@ -1,0 +1,1 @@
+http://ws.audioscrobbler.com/2.0/?method=artist.getSimilar&api_key=bad_key

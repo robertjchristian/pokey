@@ -1,0 +1,1 @@
+This tests a RESTFULL GET with a bad key.  We expect the server to return 403 Forbidden and a specific response body.  A test like this is usefull for negative use case testing.
