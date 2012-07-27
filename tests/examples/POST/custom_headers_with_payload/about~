@@ -1,1 +1,0 @@
-This test is similar to the custom headers test in the GET examples, but it uses POST instead of GET.  The difference being that we provide a payload file, which will be sent as the message body of the request.  These can be of any file type.

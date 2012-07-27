@@ -1,1 +1,0 @@
-This test is similar to the basic google.com ping, except it sends custom headers with the request. Headers are useful for a number of things, including basic authentication, spoofing user agents, caching, and interoperating with servers that communicate over high level protocols such as AS/2.
