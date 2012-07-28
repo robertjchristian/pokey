@@ -6,6 +6,10 @@ What is Pokey?
 ============================
 Pokey is an HTTP Client of sorts which allows you to specify HTTP endpoints, request headers, request body, and make assertions about the response.  It can be used for regression testing, unit testing, TDD, stress testing, health checks, or even as a friendly alternative to curl.
 
+Why Pokey?
+============================
+See the "How to Setup Tests" section... hopefully it's obvious.
+
 Prerequisites
 ============================
 * Python 2.6.6 or greater.
