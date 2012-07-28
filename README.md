@@ -14,7 +14,7 @@ Prerequisites
 How to Run
 ============================
 * Run pokey: python pokey.py (use -h for help)
-** Use --path option to specify test folder (otherwise "tests" is assumed)
+* Use --path option to specify test folder (otherwise "tests" is assumed)
 
 How to Setup Tests
 ============================
@@ -62,12 +62,10 @@ Other notes about structure:
 * Some file managers, including the native file manager in Windows 7, will automatically peek at the contents of a text file and display them in a preview pane.  This means you can completely explore your pokey test suite without opening a text editor.
 
 Roadmap
-* Consider removing requests in favor of urllib2 so that there are no prerequisites other than Python.
 ============================
+* Consider removing requests in favor of urllib2 so that there are no prerequisites other than Python.
 * Allow use of regular expressions in assertions.
-* Allow use of tokens in metadata files for greater flexibility.
-** For example url could contain http://${host}${port}/foo/bar and the values for host and port could be passed in on the command line or via properties file.
-** This would work the same way for payloads, headers, and assertions.
+* Allow use of tokens in metadata files for greater flexibility.  For example url could contain http://${host}${port}/foo/bar and the values for host and port could be passed in on the command line or via properties file.  This would work the same way for payloads, headers, and assertions.
 * Built out example tests a little better... it's tough just using what's out there (google/yahoo) without credentials... may want to host a webapp to provide richer examples.
 * Add in support for spawning many tests instances at a time to facilitate stress testing.
 * Consider building a set of penetration tests based on OWASP.
@@ -75,6 +73,5 @@ Roadmap
 Support
 ============================
 * Report issues [here] (https://github.com/robertjchristian/pokey/issues)
-* Wiki [here] (https://github.com/robertjchristian/pokey/wiki)
-* Also see the pokey [project page] (http://robertjchristian.github.com/pokey)
-
+* [Wiki] (https://github.com/robertjchristian/pokey/wiki)
+* Also see the [pokey project page] (http://robertjchristian.github.com/pokey)
