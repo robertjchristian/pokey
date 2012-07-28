@@ -8,7 +8,7 @@ Pokey is an HTTP Client of sorts which allows you to specify HTTP endpoints, req
 
 Why Pokey?
 ============================
-See the "How to Setup Tests" section... hopefully it's obvious.
+See the "How to Setup Tests" section... hopefully it's obvious!
 
 Prerequisites
 ============================
@@ -50,7 +50,7 @@ First let's look at a tree view of this project:
                 ├── payload
                 └── url
 </pre>
-Instead of using configuration files, pokey lets the file structure to most of the talking.  In this example, a simple "tree" command in the terminal tells us a lot about our test suite:
+_Instead of using configuration files, pokey lets the file structure to most of the talking.  In this example, a simple "tree" command in the terminal tells us a lot about our test suite:_
 
 * Looks like we have examples that are organized into GET and POST
 * There are three GET examples
@@ -60,7 +60,7 @@ Instead of using configuration files, pokey lets the file structure to most of t
 * There is one POST example
 + In this example, the existence of a payload file tells pokey we want to perform a POST.  The payload file can be of any content type.
 
-Other notes about structure:
+_Other notes about structure:_
 
 * The about files are just there for humans, and provide some notes about the test.  It's just a suggested convention.
 * Some file managers, including the native file manager in Windows 7, will automatically peek at the contents of a text file and display them in a preview pane.  This means you can completely explore your pokey test suite without opening a text editor.
