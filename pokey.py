@@ -11,9 +11,9 @@ import sys
 #########################################################
 # Test version compatibility
 #########################################################
-if sys.version_info < (2, 6, 6) or sys.version_info >= (3, 0):
-  print "\nMust be run with Python version v such that 2.6.6<=v<3.\n"
-  sys.exit(1)
+#if sys.version_info < (2, 6, 6) or sys.version_info >= (3, 0):
+#  print( "\nMust be run with Python version v such that 2.6.6<=v<3.\n")
+#  sys.exit(1)
 
 #########################################################
 # Test for requests module (only non-native lib)
@@ -21,7 +21,7 @@ if sys.version_info < (2, 6, 6) or sys.version_info >= (3, 0):
 try:
   import requests
 except ImportError:
-  print "\nMust have requests module installed.  Run setup.sh for prerequisites.\n"
+  print( "\nMust have requests module installed.  Run setup.sh for prerequisites.\n")
   sys.exit(1)
 
 #########################################################
@@ -113,7 +113,7 @@ for root, dirnames, filenames in os.walk(path):
 # for each subfolder of the base test path, run the test
 for input_folder in testfolders:
 
-  print "\n-----------------------------------------------\nInspecting: " + input_folder
+  print( "\n-----------------------------------------------\nInspecting: " + input_folder)
 
   # get test data
   url, headers, request_body, expected_response_message, expected_response_body = prep_test_data(base_url, input_folder)
@@ -131,37 +131,37 @@ for input_folder in testfolders:
   overall_elapsed += time_elapsed
   response_message = str(r.status_code) + " " + r.reason
 
-  print "URL: " + url
-  print "Seconds elapsed: " + '%s' % float('%f' % (time_elapsed)) 
-  print "Response Expected: [" + expected_response_message + "]" 
-  print "Response Actual:   [" + response_message + "]"
+  print( "URL: " + url)
+  print( "Seconds elapsed: " + '%s' % float('%f' % (time_elapsed)))
+  print( "Response Expected: [" + expected_response_message + "]")
+  print( "Response Actual:   [" + response_message + "]")
 
   # test expected response message assertion
   if not expected_response_message.strip() == response_message.strip():
-    print "!! Failed expected response message assertion."
+    print( "!! Failed expected response message assertion.")
     failed = True
 
   # test expected response body assertion
   if not expected_response_message == None and not expected_response_message == response_message:
-    print "!! Failed expected response body assertion."
+    print( "!! Failed expected response body assertion.")
     failed = True
 
   if failed:
-    print "Test failed.\n-----------------------------------------------"
+    print( "Test failed.\n-----------------------------------------------")
     totalfailed = totalfailed + 1
     # TODO check for a fast fail flag 
     # helpful if using for TDD or continuous integration
   else:
-    print "Test passed.\n-----------------------------------------------"
+    print( "Test passed.\n-----------------------------------------------")
     
 
 
-print "\n***********************************************"
+print( "\n***********************************************")
 if failed:
-  print str(totalfailed) + " tests failed."
+  print( str(totalfailed) + " tests failed.")
 else:
-  print "All tests passed!"
+  print( "All tests passed!")
 
-print "Overall seconds elapsed: " + '%s'  % float('%f' % (overall_elapsed))
-print "***********************************************"
-print "\nDone.\n"
+print( "Overall seconds elapsed: " + '%s'  % float('%f' % (overall_elapsed)))
+print( "***********************************************")
+print( "\nDone.\n")
