@@ -11,9 +11,9 @@ import sys
 #########################################################
 # Test version compatibility
 #########################################################
-#if sys.version_info < (2, 6, 6) or sys.version_info >= (3, 0):
-#  print( "\nMust be run with Python version v such that 2.6.6<=v<3.\n")
-#  sys.exit(1)
+if sys.version_info < (2, 6, 6):
+  print( "\nMust be run with at least Python version 2.6.6\n")
+  sys.exit(1)
 
 #########################################################
 # Test for requests module (only non-native lib)
