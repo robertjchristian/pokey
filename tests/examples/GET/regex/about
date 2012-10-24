@@ -1,0 +1,2 @@
+This is a regex example. All we're doing here is asserting "my regex pattern matches the body of the response".
+Make sure to always start your regex with a "^" character.
