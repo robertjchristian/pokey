@@ -25,8 +25,9 @@ How to Setup Tests
 First let's look at a tree view of this project:
 
 <pre>
-├── pokey.py
+├── MIT-LICENSE.txt
 ├── README.md
+├── pokey.py
 ├── setup.sh
 └── tests
     └── examples
@@ -34,6 +35,10 @@ First let's look at a tree view of this project:
         │   ├── custom_headers
         │   │   ├── about
         │   │   ├── headers
+        │   │   └── url
+        │   ├── regex
+        │   │   ├── about
+        │   │   ├── regex
         │   │   └── url
         │   ├── rest_call_with_assertions
         │   │   ├── about
@@ -56,7 +61,7 @@ _Instead of using configuration files, pokey lets the file structure do most of 
 * The "simplest" test is the simplest possible example of a pokey test.  It contains only an url.  Later we'll see that since there is no payload, a "GET" is implied, and since there is no assertion made about the response, a "200 OK" is expected.
 * The "custom_headers" test uses custom request headers.  So it's like simplest, but here we provide a basic authentication header among others.
 * The "rest_call_with_assertions" is an example negative-case test, where we expect something other than a "200 OK" returned from the server.
-* The "custom_headers_with_payload" test includes a request body (payload).  Ehe existence of a payload file tells pokey we want to perform a POST.  The payload file can be of any content type.
+* The "custom_headers_with_payload" test includes a request body (payload).  The existence of a payload file tells pokey we want to perform a POST.  The payload file can be of any content type.
 
 _Other notes about structure:_
 

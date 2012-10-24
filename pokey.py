@@ -27,7 +27,7 @@ except ImportError:
 #########################################################
 # Additional imports
 #########################################################
-import argparse, os, time
+import argparse, os, time, re
 from subprocess import call
 
 #########################################################
@@ -74,8 +74,16 @@ def prep_test_data(base_url, input_folder):
     except IOError as e:
         pass
 
+    # fetch regex
+    regex = None
+    try:
+      with open(input_folder + "/regex",'r') as regex:
+        regex = regex.read()
+    except IOError as e:
+        pass
+
     # return test input data
-    return url, headers, request_body, expected_response_message, expected_response_body
+    return url, headers, request_body, expected_response_message, expected_response_body, regex
     
 #########################################################
 # Parse command line args for base url and base test
@@ -87,6 +95,14 @@ def parse_args():
   parser.add_argument('--path', action="store", default="./tests", type=str, help="Folder containing tests.")
   parse_result = parser.parse_args()
   return parse_result.baseurl, parse_result.path
+
+#########################################################
+# Display regex matches
+#########################################################
+def displaymatch(match):
+    if match is None:
+        return None
+    return '<Match: %r, groups=%r>' % (match.group(), match.groups())
 
 #########################################################
 # Entry point
@@ -112,11 +128,11 @@ for root, dirnames, filenames in os.walk(path):
   
 # for each subfolder of the base test path, run the test
 for input_folder in testfolders:
-
+  failed = False
   print( "\n-----------------------------------------------\nInspecting: " + input_folder)
 
   # get test data
-  url, headers, request_body, expected_response_message, expected_response_body = prep_test_data(base_url, input_folder)
+  url, headers, request_body, expected_response_message, expected_response_body, regex = prep_test_data(base_url, input_folder)
 
   # run the test
   start_time = time.time()
@@ -135,6 +151,8 @@ for input_folder in testfolders:
   print( "Seconds elapsed: " + '%s' % float('%f' % (time_elapsed)))
   print( "Response Expected: [" + expected_response_message + "]")
   print( "Response Actual:   [" + response_message + "]")
+  if not regex == None:
+   print("Regex Provided:   [" + regex + "]")
 
   # test expected response message assertion
   if not expected_response_message.strip() == response_message.strip():
@@ -145,6 +163,15 @@ for input_folder in testfolders:
   if not expected_response_message == None and not expected_response_message == response_message:
     print( "!! Failed expected response body assertion.")
     failed = True
+
+  # test expected response body assertion via regex match
+  if not regex == None:
+   match = re.search(regex,r.text)
+   if match == None: 
+     print( "!! Failed to find a regex [" + regex + "] match in the response body assertion.")
+     failed = True
+   else:
+    print(displaymatch(match))
 
   if failed:
     print( "Test failed.\n-----------------------------------------------")
@@ -157,7 +184,7 @@ for input_folder in testfolders:
 
 
 print( "\n***********************************************")
-if failed:
+if totalfailed > 0:
   print( str(totalfailed) + " tests failed.")
 else:
   print( "All tests passed!")
